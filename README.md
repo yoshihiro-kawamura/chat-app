@@ -50,3 +50,19 @@
 
 - belongs_to :room
 - belongs_to :user
+
+
+
+
+
+<!-- 中略 -->
+<select name="room[user_ids][]">
+  <option value="">チャットするユーザーを選択してください</option>
+  <% User.where.not(id: current_user.id).each do |user| %>
+    <option value= <%= user.id %>><%= user.name %> </option>
+  <% end %>
+</select>
+<!-- 中略 -->
+
+params = {key: value}
+params = {room :{name:sample, user_ids:[1,2,3,4,5]}}
